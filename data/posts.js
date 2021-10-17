@@ -21,17 +21,17 @@ export default [
   {
     id: "p2",
     videoUri:
-      "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
     user: {
       id: "u1",
-      username: "Test",
+      username: "leow42",
       imageUri:
-        "https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg",
+        "https://images.ecestaticos.com/1TA4WepJHV4yJsxe-BvWNlmPfK8=/251x2:2273x1518/1200x899/filters:fill(white):format(jpg)/https://f.elconfidencial.com/original/6f1/877/a30/6f1877a3038a123e3b5219476d985d98.jpg",
     },
-    description: "hahahah oh boy @borat",
-    songName: "NF - The search",
+    description: "hahahah #workHard",
+    songName: "Post Malone - Circles ",
     songImage:
-      "https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg",
+      "https://images.ecestaticos.com/1TA4WepJHV4yJsxe-BvWNlmPfK8=/251x2:2273x1518/1200x899/filters:fill(white):format(jpg)/https://f.elconfidencial.com/original/6f1/877/a30/6f1877a3038a123e3b5219476d985d98.jpg",
     likes: 123,
     comments: 12,
     shares: 44,
@@ -40,17 +40,17 @@ export default [
   {
     id: "p3",
     videoUri:
-      "https://d8vywknz0hvjw.cloudfront.net/fitenium-media-prod/videos/45fee890-a74f-11ea-8725-311975ea9616/proccessed_720.mp4",
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
     user: {
       id: "u1",
-      username: "User 3",
+      username: "Startte33r2",
       imageUri:
-        "https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg",
+        "https://m.media-amazon.com/images/M/MV5BMTQ3ODExOTk1N15BMl5BanBnXkFtZTcwMTQzMDQ2NA@@._V1_.jpg",
     },
-    description: "hahahah oh boy @borat",
-    songName: "NF - The search",
+    description: "",
+    songName: "Sofia - 1, 2, 3, lalala",
     songImage:
-      "https://influencermarketinghub.com/wiki/wp-content/uploads/2020/08/1657369265111046_c5_720x720.jpeg",
+      "https://m.media-amazon.com/images/M/MV5BMTQ3ODExOTk1N15BMl5BanBnXkFtZTcwMTQzMDQ2NA@@._V1_.jpg",
     likes: 123,
     comments: 12,
     shares: 44,

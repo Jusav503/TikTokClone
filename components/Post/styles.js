@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
     fontSize: 13,
   },
-  musicContainer: { flexDirection: "row", alignItems: "center" },
+  musicContainer: { flexDirection: "row", alignItems: "center", overflow: "hidden" },
   musicDisc: {
     width: 55,
     height: 55,
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderColor: "#17202A",
     alignSelf: "flex-end",
-    marginBottom: 20,
+    aspectRatio: 1,
   },
 });
 
