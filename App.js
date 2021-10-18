@@ -1,14 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import Home from "./screens/Home";
+import HomeScreen from "./screens/HomeScreen"
 
 export default function App() {
   return (
-    <SafeAreaView style={{backgroundColor: "black"}}>
+    <SafeAreaProvider>
+      <HomeScreen />
       <StatusBar style="light" backgroundColor="black" />
-      <Home />
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

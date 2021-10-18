@@ -1,29 +1,41 @@
 import { Dimensions, StyleSheet } from "react-native";
 
+const WIDTH = Dimensions.get("window").width;
+const HEIGHT = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
   container: {
-    width: "100%",
-    height: Dimensions.get("window").height,
+    width: WIDTH,
+    height: HEIGHT,
+    backgroundColor:"black",
   },
   video: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
+    width: WIDTH,
+    height: HEIGHT,
     borderRadius: 15,
+    position: "absolute",
   },
-  uiContainer: { height: "100%", justifyContent: "flex-end", padding: 10 },
+  uiContainer: { 
+    width: WIDTH, 
+    height: HEIGHT, 
+    justifyContent: "flex-end",
+    paddingBottom:10
+  },
   feedbackContainer: {
     alignSelf: "flex-end",
     alignItems: "center",
+    paddingBottom:30
   },
   profilePicture: {
     width: 50,
     height: 50,
     borderRadius: 25,
     marginBottom: 30,
+    borderWidth: 1,
+    borderColor: "white",
   },
-  bottomInfo: { flexDirection: "row", justifyContent: "space-between" },
-  infoContainer: { width: 230 },
+  bottomInfo: { flexDirection: "row", justifyContent: "space-around",},
+  infoContainer: { width: 230, },
   username: {
     color: "#fff",
     fontWeight: "bold",
@@ -43,7 +55,7 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderColor: "#17202A",
     alignSelf: "flex-end",
-    aspectRatio: 1,
+
   },
 });
 

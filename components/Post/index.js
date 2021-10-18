@@ -41,7 +41,7 @@ const Post = (props) => {
 
   return (
     <View style={styles.container}>
-    <TouchableWithoutFeedback onPress={() => togglePlayPause(!isPaused) }>
+      <TouchableWithoutFeedback onPress={() => togglePlayPause(!isPaused) }>
         <Video
           ref={video}
           source={{ uri: post.videoUri }}
@@ -54,12 +54,11 @@ const Post = (props) => {
 
       <View style={styles.uiContainer}>
         <View style={styles.feedbackContainer}>
-          <View style={{alignItems: 'center'}}>
+          <View style={{alignItems: 'center', paddingRight: 3}}>
             <Image style={styles.profilePicture} source={{ uri: post.user.imageUri }}/>
             <TouchableOpacity
               style={{ 
                 height:20,
-                aspectRatio: 1,
                 borderRadius:10,
                 backgroundColor: "#ee1d52",
                 justifyContent: "center",
@@ -68,7 +67,7 @@ const Post = (props) => {
                 bottom: 20
               }}
             >
-              <MaterialIcons name="add" color="white" size={20} />
+              <MaterialIcons name="add" color="white" size={17} />
             </TouchableOpacity>
           </View>
           <TouchableOpacity onPress={onLikePress} style={{ alignItems: "center" }}>
@@ -109,10 +108,8 @@ const Post = (props) => {
           </View>
           <Animated.View style={{
               height: 55,
-              aspectRatio: 1,
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 10,
               transform: [{rotate}] 
             }} 
           >
