@@ -5,26 +5,24 @@ const HEIGHT = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   container: {
-    width: WIDTH,
-    height: HEIGHT,
     backgroundColor:"black",
   },
   video: {
     width: WIDTH,
-    height: HEIGHT,
+    height: Dimensions.get("window").height-45,
     borderRadius: 15,
     position: "absolute",
   },
   uiContainer: { 
     width: WIDTH, 
-    height: HEIGHT, 
+    height: Dimensions.get("window").height,
     justifyContent: "flex-end",
-    paddingBottom:10
+    paddingBottom:60
   },
   feedbackContainer: {
     alignSelf: "flex-end",
     alignItems: "center",
-    paddingBottom:30
+    paddingBottom:20
   },
   profilePicture: {
     width: 50,
@@ -47,7 +45,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.2,
     fontSize: 13,
   },
-  musicContainer: { flexDirection: "row", alignItems: "center", overflow: "hidden" },
+  musicContainer: { flexDirection: "row", alignItems: "center", overflow: "hidden", },
   musicDisc: {
     width: 55,
     height: 55,
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
     borderWidth: 10,
     borderColor: "#17202A",
     alignSelf: "flex-end",
-
   },
 });
 

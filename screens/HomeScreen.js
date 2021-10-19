@@ -1,9 +1,10 @@
 import React from "react";
 import { View, FlatList, Dimensions } from "react-native";
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 
 import Post from "../components/Post";
 import posts from "../data/posts";
+import Navigation from "../navigation";
 
 const HomeScreen = () => {
 
@@ -15,8 +16,9 @@ const HomeScreen = () => {
         showsVerticalScrollIndicator={false}
         snapToInterval={Dimensions.get("window").height}
         snapToAlignment={"start"}
-        decelerationRate={"normal"}
+        decelerationRate={"fast"}
       />
+      <Navigation />
     </SafeAreaView>
   );
 };

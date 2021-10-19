@@ -102,19 +102,21 @@ const Post = (props) => {
                   size={18}
                   color="white"
                 />
-                {post.songName}
+                {""} {post.songName}
               </Animated.Text>
             </View>
           </View>
-          <Animated.View style={{
-              height: 55,
-              justifyContent: "center",
-              alignItems: "center",
-              transform: [{rotate}] 
-            }} 
-          >
-            <Image style={styles.musicDisc} source={{ uri: post.songImage }} />
-          </Animated.View>
+          <View style={{paddingTop:15}}>
+            <Animated.View style={{
+                height: 55,
+                justifyContent: "center",
+                alignItems: "center",
+                transform: [{rotate}],
+              }} 
+            >
+              <Image style={styles.musicDisc} source={{ uri: post.songImage }} />
+            </Animated.View>
+          </View>
         </View>
       </View>
     </View>
