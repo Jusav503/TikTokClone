@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   video: {
     width: WIDTH,
-    height: Dimensions.get("window").height-45,
+    height: Dimensions.get("window").height-50,
     borderRadius: 15,
     position: "absolute",
   },
