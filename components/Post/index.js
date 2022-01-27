@@ -1,7 +1,23 @@
 import React, { useEffect, useState } from "react";
-import {View,Text,TouchableWithoutFeedback,Image,TouchableOpacity, Animated, Easing, Dimensions } from "react-native";
+import {
+  View,
+  Text,
+  TouchableWithoutFeedback,
+  Image,
+  TouchableOpacity,
+  Animated,
+  Easing,
+  Dimensions,
+} from "react-native";
 import { Video } from "expo-av";
-import { Ionicons, AntDesign, FontAwesome, Fontisto, MaterialIcons } from "@expo/vector-icons";
+import {
+  Ionicons,
+  AntDesign,
+  FontAwesome,
+  Fontisto,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import { Portal, Modal } from "react-native-paper";
 
 import styles from "./styles";
 
@@ -9,11 +25,12 @@ const Post = (props) => {
   const [post, setPost] = useState(props.post);
   const [isLiked, setIsLiked] = useState(false);
   const [isPaused, togglePlayPause] = useState(false);
+  const [isPlayPauseModalVisible, togglePlayPauseModal] = useState(false);
 
   const video = React.useRef(null);
   const WIDTH = Dimensions.get("window").width;
   const HEIGHT = Dimensions.get("window").height;
-  
+
   const onLikePress = () => {
     const likesToAdd = isLiked ? -1 : 1;
     setPost({
@@ -24,24 +41,34 @@ const Post = (props) => {
   };
 
   const animateValue = new Animated.Value(0);
-  const rotate = animateValue.interpolate({inputRange:[0,1], outputRange:['0deg', '360deg']});
-  const translateX = animateValue.interpolate({inputRange:[0,1], outputRange:[WIDTH, -WIDTH]});
+  const rotate = animateValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["0deg", "360deg"],
+  });
+  const translateX = animateValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [WIDTH, -WIDTH],
+  });
   useEffect(() => {
     Animated.loop(
-      Animated.timing(
-        animateValue,{
-          toValue: 1,
-          duration: 6000,
-          easing: Easing.linear,
-          useNativeDriver: true
-        }        
-      )  
-    ).start()
-  })
+      Animated.timing(animateValue, {
+        toValue: 1,
+        duration: 6000,
+        easing: Easing.linear,
+        useNativeDriver: true,
+      })
+    ).start();
+  });
+  useEffect(() => {
+    togglePlayPauseModal(true);
+    setTimeout(() => {
+      togglePlayPauseModal(false);
+    }, 1000);
+  }, [isPaused]);
 
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={() => togglePlayPause(!isPaused) }>
+      <TouchableWithoutFeedback onPress={() => togglePlayPause(!isPaused)}>
         <Video
           ref={video}
           source={{ uri: post.videoUri }}
@@ -54,24 +81,34 @@ const Post = (props) => {
 
       <View style={styles.uiContainer}>
         <View style={styles.feedbackContainer}>
-          <View style={{alignItems: 'center', paddingRight: 3}}>
-            <Image style={styles.profilePicture} source={{ uri: post.user.imageUri }}/>
+          <View style={{ alignItems: "center", paddingRight: 3 }}>
+            <Image
+              style={styles.profilePicture}
+              source={{ uri: post.user.imageUri }}
+            />
             <TouchableOpacity
-              style={{ 
-                height:20,
-                borderRadius:10,
+              style={{
+                height: 20,
+                borderRadius: 10,
                 backgroundColor: "#ee1d52",
                 justifyContent: "center",
                 alignItems: "center",
                 position: "absolute",
-                bottom: 20
+                bottom: 20,
               }}
             >
               <MaterialIcons name="add" color="white" size={17} />
             </TouchableOpacity>
           </View>
-          <TouchableOpacity onPress={onLikePress} style={{ alignItems: "center" }}>
-            <AntDesign name="heart" size={35} color={isLiked ? "red" : "white"}/>
+          <TouchableOpacity
+            onPress={onLikePress}
+            style={{ alignItems: "center" }}
+          >
+            <AntDesign
+              name="heart"
+              size={35}
+              color={isLiked ? "red" : "white"}
+            />
             <Text style={{ color: "white" }}>{post.likes}</Text>
           </TouchableOpacity>
 
@@ -88,17 +125,18 @@ const Post = (props) => {
           <View style={styles.infoContainer}>
             <Text style={styles.username}>@{post.user.username}</Text>
             <Text style={styles.description}>{post.description}</Text>
-            <View style={styles.musicContainer} >
-              <Animated.Text numberOfLines={1} 
-                style={{ 
-                  color: "white", 
+            <View style={styles.musicContainer}>
+              <Animated.Text
+                numberOfLines={1}
+                style={{
+                  color: "white",
                   fontSize: 11,
-                  transform: [{translateX}]
+                  transform: [{ translateX }],
                 }}
               >
                 <Ionicons
                   name="musical-notes"
-                  style={{margin: 8}}
+                  style={{ margin: 8 }}
                   size={18}
                   color="white"
                 />
@@ -106,20 +144,46 @@ const Post = (props) => {
               </Animated.Text>
             </View>
           </View>
-          <View style={{paddingTop:15}}>
-            <Animated.View style={{
+          <View style={{ paddingTop: 15 }}>
+            <Animated.View
+              style={{
                 height: 55,
                 justifyContent: "center",
                 alignItems: "center",
-                transform: [{rotate}],
-              }} 
+                transform: [{ rotate }],
+              }}
             >
-              <Image style={styles.musicDisc} source={{ uri: post.songImage }} />
+              <Image
+                style={styles.musicDisc}
+                source={{ uri: post.songImage }}
+              />
             </Animated.View>
           </View>
         </View>
       </View>
+
+      <PlayPauseModal
+        isPaused={isPaused}
+        isPlayPauseModalVisible={isPlayPauseModalVisible}
+      />  
     </View>
+  );
+};
+
+// FUNCTIONAL COMPONENTS
+PlayPauseModal = (props) => {
+  return (
+    <Portal>
+      <Modal visible={props.isPlayPauseModalVisible}>
+        <View style={{ alignSelf: "center" }}>
+          <Ionicons
+            name={props.isPaused ? "pause-circle" : "play-circle" }
+            color={"white"}
+            size={100}
+          />
+        </View>
+      </Modal>
+    </Portal>
   );
 };
 

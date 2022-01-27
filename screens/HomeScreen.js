@@ -1,6 +1,6 @@
 import React from "react";
-import { View, FlatList, Dimensions } from "react-native";
-import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
+import { FlatList, Dimensions } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import Post from "../components/Post";
 import posts from "../data/posts";
