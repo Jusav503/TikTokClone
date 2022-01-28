@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 import Post from "../components/Post";
 import posts from "../data/posts";
-import Navigation from "../navigation";
+import Navigation from "../navigation/BottomNav";
 
 const HomeScreen = () => {
 
